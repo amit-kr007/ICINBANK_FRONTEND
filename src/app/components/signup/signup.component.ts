@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from 'src/app/shared/services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
+      private signupService:SignupService,
       // private authenticationService: AuthenticationService,
       // private userService: UserService,
       // private alertService: AlertService
@@ -29,7 +31,8 @@ export class SignupComponent implements OnInit {
       this.registerForm = this.formBuilder.group({
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
-          username: ['', Validators.required],
+          phone:['',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+          email:['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
           password: ['', [Validators.required, Validators.minLength(6)]]
       });
   }
@@ -61,6 +64,13 @@ export class SignupComponent implements OnInit {
       //             this.alertService.error(error);
       //             this.loading = false;
       //         });
+      this.signupService.registerUser(this.registerForm.value.firstName,this.registerForm.value.lastName,this.registerForm.value.phone,this.registerForm.value.email,this.registerForm.value.password).subscribe(res=>{
+          console.log(res);
+          this.loading = false;
+          this.router.navigate(['/login']);
+      })
+
+
   }
 
 }
