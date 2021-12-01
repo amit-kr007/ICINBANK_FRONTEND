@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       //         });
       this.loginService.login(this.f.username.value, this.f.password.value).subscribe(res=>{
           console.log(res);
-          this.router.navigate(['home']);
+          this.router.navigate(['admin']);
       });
 
   }
