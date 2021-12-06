@@ -6,6 +6,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ChequeComponent } from './cheque/cheque.component';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { AdminComponent } from './admin.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AdminComponent } from './admin.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    NgxPaginationModule
     
   ]
 })

@@ -8,16 +8,53 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
-
+  config: any;
+  users:any;
+  p:number=1;
+  collection = { count: 10, data: [{}] };
   constructor( private httpClient:HttpClient,private userService:UserService) { 
-
+    
   }
 
+
   ngOnInit(): void {
+    this.callGetUser();
+  }
+  pageChanged(event: any){
+    this.config.currentPage = event;
+  }
+  changeAction(user:any)
+  {
+    console.log("changeAction");
+      this.userService.changeAuthenticatiopn(user.username,user.enabled).subscribe(res=>{
+        console.log(res);
+        //this.ngOnInit();
+        this.callGetUser();
+      })
+  }
+  callGetUser()
+  {
     console.log("user Account");
       this.userService.getAllUsers().subscribe(res=>{
         console.log(res);
+        this.users=res;
+
       })
   }
+  createPrimaryAccount(user:any){
+     console.log(user);
+     this.userService.createUserPrimaryAccount(user).subscribe(res=>{
+       console.log(res);
+       this.callGetUser();
+     })
+  }
+  createSavingsAccount(user:any){
+    console.log(user);
+    this.userService.createUserSavingAccount(user).subscribe(res=>{
+      console.log(res);
+      this.callGetUser();
+    })
+ }
+  
 
 }

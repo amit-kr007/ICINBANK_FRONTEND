@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="javascript:void(0);" (click)="goToAdminHome()">ICIN BANK</a>
+    <a class="navbar-brand" href="javascript:void(0);" (click)="goToUserHome()">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,11 +8,14 @@
       <ul class="navbar-nav mr-auto ">
         
         <li class="nav-item">
-          <a class="nav-link " href="javascript:void(0);" (click)="getUserAccounts()">User Account</a>
+          <a class="nav-link " href="javascript:void(0);" (click)="transferMoney()">Transfer</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" (click)="getChequeBookRequest()">Cheque Book Requests </a>
+          <a class="nav-link" href="javascript:void(0);" (click)="sendChequeRequest()">Request </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" (click)="transactionHistory()">Transactions</a>
         </li>
       </ul>
       
@@ -22,3 +25,4 @@
     </div>
   </nav>
   <router-outlet></router-outlet>
+

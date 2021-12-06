@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">accountNo</th>
+        <th scope="col">amount</th>
+        <th scope="col">date</th>
+        <th scope="col">time</th>
+        <th scope="col">transactionType</th>    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trans of transactions">
+        
+        <td>{{trans.accountNo}}</td>
+        <td>{{trans.amount}}</td>
+        <td>{{trans.date}}</td>
+        <td>{{trans.time}}</td>
+        <td>{{trans.transactionType}}</td>
+      </tr>
+    </tbody>
+  </table>

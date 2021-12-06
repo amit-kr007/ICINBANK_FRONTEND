@@ -65,8 +65,19 @@ export class LoginComponent implements OnInit {
       //             this.loading = false;
       //         });
       this.loginService.login(this.f.username.value, this.f.password.value).subscribe(res=>{
-          console.log(res);
-          this.router.navigate(['admin']);
+          console.log(res.user.userRole);
+          if(res!=null)
+          {
+              if(res.user.userRole==="ADMIN")
+              {
+                this.router.navigate(['admin']);
+              }
+              if(res.user.userRole==="USER")
+              {
+                this.router.navigate(['user']);
+              }
+          }
+          
       });
 
   }

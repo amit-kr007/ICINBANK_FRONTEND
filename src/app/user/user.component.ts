@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   constructor(private router:Router) { }
 
@@ -20,19 +20,24 @@ export class AdminComponent implements OnInit {
     console.log("logOut");
     this.router.navigate(['login']);
   }
-  goToAdminHome()
+  goToUserHome()
   {
-    this.router.navigate(['admin/home']);
+    this.router.navigate(['user/home']);
   }
-  getUserAccounts()
+  transferMoney()
   {
     console.log("getUserAccounts");
-    this.router.navigate(['admin/users']);
+    this.router.navigate(['user/transfer']);
   }
-  getChequeBookRequest()
+  sendChequeRequest()
   {
     console.log("getChequeBookRequest");
-    this.router.navigate(['admin/cheque']);
+    this.router.navigate(['user/request']);
+  }
+  transactionHistory()
+  {
+    console.log("transactionHistory");
+    this.router.navigate(['user/transaction']);
   }
 
 }

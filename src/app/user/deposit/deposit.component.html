@@ -1,0 +1,29 @@
+<div class="container" style="width: 30%;margin-top: 7%;">
+    <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+        <div class="form-group">
+            <label for="accountType">Amount Type</label>
+
+            <select formControlName="accountType">
+                <option [ngValue]="" selected disabled>Select amount type</option>
+
+                <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
+            </select>
+            <div *ngIf="submitted && this.f.accountType.errors" class="invalid-feedback">
+                <div *ngIf="f.accountType.errors.required">amount type is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="text" formControlName="amount" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                <div *ngIf="f.amount.errors.required">amount is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button  class="btn btn-primary">
+                Deposit
+            </button>
+        </div>
+    </form>
+    </div>
