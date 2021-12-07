@@ -10,6 +10,8 @@ import { DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -19,12 +21,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     RequestComponent,
     DepositComponent,
     WithdrawComponent,
-    TransactionComponent,],
+    TransactionComponent,
+    ProfileComponent,],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    
+    NgxPaginationModule
   ]
 })
 export class UserModule { }

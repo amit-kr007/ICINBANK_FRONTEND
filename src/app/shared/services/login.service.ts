@@ -23,14 +23,15 @@ export class LoginService {
       console.log(res);
       if(res!=null)
       {
-        console.log(res.user.primaryAccount.balance);
+        // console.log(res.user.primaryAccount.balance);
         localStorage.setItem('token',res.jwt);
         localStorage.setItem('user_id', res.user.id);
+        localStorage.setItem('email', res.user.email);
         localStorage.setItem('user_role', res.user.userRole);
-        localStorage.setItem('primaryBalance', res.user.primaryAccount.balance);
-        localStorage.setItem('savingsBalance', res.user.savingsAccount.balance);
-        localStorage.setItem('primaryAccountNo', res.user.primaryAccount.accountNo);
-        localStorage.setItem('savingsAccountNo', res.user.savingsAccount.accountNo);
+        // localStorage.setItem('primaryBalance', res.user.primaryAccount.balance);
+        // localStorage.setItem('savingsBalance', res.user.savingsAccount.balance);
+        // localStorage.setItem('primaryAccountNo', res.user.primaryAccount.accountNo);
+        // localStorage.setItem('savingsAccountNo', res.user.savingsAccount.accountNo);
         this.userService.setUser(res.user);
         // const decodedToken = helper.decodeToken(res.jwt);
         // console.log(decodedToken);

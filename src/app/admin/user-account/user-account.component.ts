@@ -11,7 +11,8 @@ export class UserAccountComponent implements OnInit {
   config: any;
   users:any;
   p:number=1;
-  collection = { count: 10, data: [{}] };
+  
+  
   constructor( private httpClient:HttpClient,private userService:UserService) { 
     
   }
@@ -19,6 +20,7 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.callGetUser();
+    console.log(Math.floor(Math.random() * 899999 + 1000000000000000))
   }
   pageChanged(event: any){
     this.config.currentPage = event;

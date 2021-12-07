@@ -9,6 +9,7 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
   user:any;
+  accountNo:number=0;
   setUser(user:any)
   {
     this.user=user;
@@ -43,21 +44,21 @@ export class UserService {
   {
     const body={
       balance:0,
-      accountNo:"2389000100098622",
+      accountNo:Math.floor(Math.random() * 899999 + 1000000000000000).toString(),
       user:{
         id:user.id
       }
     }
     let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json')
     // .set('balance',balance.toString()).set('');
-    //console.log(reqHeaders);
+    console.log(reqHeaders);
     return this.httpClient.post<any>(`${"http://localhost:8080" + '/admin/create_primary'}`,body,{ headers: reqHeaders })
   }
   createUserSavingAccount(user:any):Observable<any>
   {
     const body={
       balance:0,
-      accountNo:"2389000100098632",
+      accountNo:Math.floor(Math.random() * 899999 + 1000000000000000).toString(),
       user:{
         id:user.id
       },
@@ -65,7 +66,15 @@ export class UserService {
     }
     let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json')
     // .set('balance',balance.toString()).set('');
-    //console.log(reqHeaders);
+    console.log(reqHeaders);
     return this.httpClient.post<any>(`${"http://localhost:8080" + '/admin/create_savings'}`,body,{ headers: reqHeaders })
+  }
+  getUserProfile(email:string):Observable<any>
+  {
+    // /userprofile/{email}
+    let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json')
+
+    return this.httpClient.get<any>(`${"http://localhost:8080" + '/user/userprofile/'+email}`,{ headers: reqHeaders })
+
   }
 }

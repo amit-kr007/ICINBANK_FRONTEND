@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DepositComponent } from './deposit/deposit.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RequestComponent } from './request/request.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransferComponent } from './transfer/transfer.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
      {path:'request',component:RequestComponent},
      {path:'deposit',component:DepositComponent},
      {path:'withdraw',component:WithdrawComponent},
+     {path:'profile',component:ProfileComponent},
      {path:'transaction',component:TransactionComponent}
    ]}
 ];

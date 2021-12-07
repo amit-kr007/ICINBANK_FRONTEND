@@ -12,6 +12,7 @@ export class TransferComponent implements OnInit {
   accountType: string[] = ['PRIMARY', 'SAVINGS'];
   default: string = 'PRIMARY';
   submitted: boolean = false;
+  statusMessage:string="";
   constructor(private userAccountService:UserAccountService) {
     this.transactionForm = new FormGroup({
       account: new FormControl(null),
@@ -37,6 +38,13 @@ export class TransferComponent implements OnInit {
                                         this.transactionForm.value.receiverUsername,
                                         this.transactionForm.value.account).subscribe(res=>{
                                           console.log(res);
+                                          if(res==1)
+                                          {
+                                            this.statusMessage="Transfered successfully "
+                                          }
+                                          else{
+                                            this.statusMessage="Username or Account Number is incorrect"
+                                          }
                                         })
   }
   get f() { return this.transactionForm.controls; }

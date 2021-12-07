@@ -39,5 +39,10 @@ export class UserComponent implements OnInit {
     console.log("transactionHistory");
     this.router.navigate(['user/transaction']);
   }
+  viewProfile()
+  {
+    console.log("viewProfile");
+    this.router.navigate(['user/profile']);
+  }
 
 }

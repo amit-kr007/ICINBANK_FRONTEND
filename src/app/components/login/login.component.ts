@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string | undefined;
-
+  iserror:boolean=false;
+message:string="";
   constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
@@ -64,6 +65,7 @@ export class LoginComponent implements OnInit {
       //             this.alertService.error(error);
       //             this.loading = false;
       //         });
+      this.iserror=false;
       this.loginService.login(this.f.username.value, this.f.password.value).subscribe(res=>{
           console.log(res.user.userRole);
           if(res!=null)
@@ -78,7 +80,12 @@ export class LoginComponent implements OnInit {
               }
           }
           
-      });
+      },error => {
+        this.iserror=true;
+        this.message=error.error.message
+        console.log(error.error.message);
+      }
+      );
 
   }
 

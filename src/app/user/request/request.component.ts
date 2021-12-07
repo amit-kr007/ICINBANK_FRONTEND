@@ -17,6 +17,7 @@ export class RequestComponent implements OnInit {
   accountTypeForm: FormGroup;
   accountTypeForm1: FormGroup;
   statusMessage:string="";
+  statusMessage1:string="";
 
   constructor(private userAccountService:UserAccountService) {
       this.accountTypeForm = new FormGroup({
@@ -78,6 +79,16 @@ export class RequestComponent implements OnInit {
     console.log(this.accountTypeForm.value.account);
     this.userAccountService.requestChequeBook(this.accountTypeForm.value.account).subscribe(res=>{
       console.log(res);
+      if(res==0)
+      {
+        this.statusMessage1="Request Already Made";
+      }
+      else{
+        if(res==1)
+        {
+          this.statusMessage1="Request sent successfully";
+        }
+      }
     })
   }
 

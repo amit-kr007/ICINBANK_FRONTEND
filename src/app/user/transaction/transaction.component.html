@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let trans of transactions">
+      <tr *ngFor="let trans of transactions | paginate:{itemsPerPage:10,currentPage:p};">
         
         <td>{{trans.accountNo}}</td>
         <td>{{trans.amount}}</td>
@@ -18,4 +18,5 @@
         <td>{{trans.transactionType}}</td>
       </tr>
     </tbody>
+    <pagination-controls (pageChange)="p=$event "></pagination-controls>
   </table>

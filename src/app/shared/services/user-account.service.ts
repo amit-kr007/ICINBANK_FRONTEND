@@ -32,6 +32,29 @@ export class UserAccountService {
      return this.httpClient.post<any>(`${"http://localhost:8080" + '/user/deposit/savings'}`,body, { headers: reqHeaders })
  
   }
+  withdrawInUserPrimaryAccount(amount:number):Observable<any>
+  {
+      console.log(localStorage.getItem('user_id'));
+      console.log(amount);
+      let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+      const body={
+        amount:amount,
+        id:localStorage.getItem('user_id')
+      }
+     return this.httpClient.post<any>(`${"http://localhost:8080" + '/user/withdraw/primary'}`,body, { headers: reqHeaders })
+  }
+  withdrawInUserSavingsAccount(amount:number):Observable<any>
+  {
+      console.log(localStorage.getItem('user_id'));
+      console.log(amount);
+      let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+      const body={
+        amount:amount,
+        id:localStorage.getItem('user_id')
+      }
+     return this.httpClient.post<any>(`${"http://localhost:8080" + '/user/withdraw/savings'}`,body, { headers: reqHeaders })
+ 
+  }
 
   requestChequeBook(accountType:string):Observable<any>
   {
@@ -77,6 +100,29 @@ export class UserAccountService {
      
    }
     return this.httpClient.post<any>(`${"http://localhost:8080" + '/user/transfer'}`,body, { headers: reqHeaders })
+
+  }
+
+  getChequeBookRequest():Observable<any>
+  {
+    let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.get<any>(`${"http://localhost:8080" + '/admin/checkbooks'}`, { headers: reqHeaders })
+
+  }
+  confirmChequeBookRequest(userId:Number,accountType:string):Observable<any>
+  {
+
+    let reqHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    if(accountType==="SAVINGS")
+    {
+      return this.httpClient.post<any>(`${"http://localhost:8080" + '/admin/checkbook/confirm/savings/'+userId}`, { headers: reqHeaders })
+
+    }
+    else{
+      return this.httpClient.post<any>(`${"http://localhost:8080" + '/admin/checkbook/confirm/primary/'+userId}`, { headers: reqHeaders })
+
+    }
 
   }
 

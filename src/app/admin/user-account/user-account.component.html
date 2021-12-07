@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users | paginate:{itemsPerPage:1,currentPage:p};">
+          <tr *ngFor="let user of users | paginate:{itemsPerPage:10,currentPage:p};">
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.phoneNo}}</td>
